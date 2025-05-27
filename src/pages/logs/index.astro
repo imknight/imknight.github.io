@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import { LOGS } from "@consts";
+
+const logs = (await getCollection("logs"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(1);
+
+const firstLogs = (await getCollection("logs"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0,1);
+
+const log = await Promise.all(
+  firstLogs.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+---
+
+<PageLayout title={LOGS.TITLE} description={LOGS.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+          Logs
+      </div>
+
+      <ul class="flex flex-col space-y-4">
+        {
+          log.map(entry => (
+            <li class="animate">
+              <div class="text-sm opacity-75">
+                  Now
+              </div>
+              <div class="font-semibold text-black dark:text-white">
+                  {entry.data.title}
+              </div>
+              <div class="text-sm opacity-75">
+                {entry.data.description}
+              </div>
+              <article>
+                <entry.Content />
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="animate flex flex-col gap-4">
+        {
+          logs.map((log) => (
+            <li>
+              <ArrowCard entry={log}/>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</PageLayout>

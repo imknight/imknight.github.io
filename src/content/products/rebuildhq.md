@@ -1,6 +1,6 @@
 ---
-title: "RenderTogether"
-description: "Render AI Image Together."
+title: "RebuildHQ"
+description: "AI-Powered Pivot Ideas for Your Website."
 date: "May 2025"
-link: "https://rendertogether.com"
+link: "https://rebuildhq.com"
 ---

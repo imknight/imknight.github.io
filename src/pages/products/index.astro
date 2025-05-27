@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import ArrowCardLink from "@components/ArrowCardLink.astro";
+import { PRODUCTS } from "@consts";
+
+const products = (await getCollection("products"))
+  .filter(product => !product.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<PageLayout title={PRODUCTS.TITLE} description={PRODUCTS.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+          Products
+      </div>
+      <ul class="animate flex flex-col gap-4">
+        {
+          products.map((product) => (
+            <li>
+              <ArrowCardLink entry={product}/>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</PageLayout>

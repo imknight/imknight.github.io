@@ -6,10 +6,11 @@ export const SITE: Site = {
   NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
+  NUM_PRODUCTS_ON_HOMEPAGE: 5,
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
+  TITLE: "My",
   DESCRIPTION: "Astro Nano is a minimal and lightweight blog and portfolio.",
 };
 
@@ -23,12 +24,22 @@ export const WORK: Metadata = {
   DESCRIPTION: "Where I have worked and what I have done.",
 };
 
+export const LOGS: Metadata = {
+  TITLE: "Logs",
+  DESCRIPTION: "What I have done.",
+};
+
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION:
     "A collection of my projects, with links to repositories and demos.",
 };
 
+export const PRODUCTS: Metadata = {
+  TITLE: "Products",
+  DESCRIPTION:
+    "A collection of my products, with links to repositories and demos.",
+};
 export const SOCIALS: Socials = [
   {
     NAME: "twitter-x",
@@ -37,9 +48,5 @@ export const SOCIALS: Socials = [
   {
     NAME: "blueksy",
     HREF: "https://imknight.bsky.social",
-  },
-  {
-    NAME: "blog",
-    HREF: "https://imknight.com",
   },
 ];
