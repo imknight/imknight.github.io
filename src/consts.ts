@@ -35,7 +35,11 @@ export const SOCIALS: Socials = [
     HREF: "https://twitter.com/imknight",
   },
   {
-    NAME: "github",
-    HREF: "https://github.com/imknight",
+    NAME: "blueksy",
+    HREF: "https://imknight.bsky.social",
+  },
+  {
+    NAME: "blog",
+    HREF: "https://imknight.com",
   },
 ];

@@ -3,14 +3,29 @@ import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
+import ArrowCardLink from "@components/ArrowCardLink.astro";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
-const blog = (await getCollection("blog"))
-  .filter(post => !post.data.draft)
+// const blog = (await getCollection("blog"))
+//   .filter(post => !post.data.draft)
+//   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+//   .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const logs = (await getCollection("logs"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+  .slice(0,1);
+
+const log = await Promise.all(
+  logs.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+
+const products = (await getCollection("products"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
@@ -41,19 +56,68 @@ const work = await Promise.all(
           <p class="animate">
               I' m a Developer / Freelancer / Maker / #Nocode Builder<br></br>
               I started a #nocode agency - VisualDev Studio 🚀 in 2021 and focus on building custom Adalo Components over Adalomatic 🚧 in 2022.</br>
-              Took a break in 2023 and coming back in 2024</br>
+              Took a break in 2023 and coming back to build again in 2024</br>
+              Trying to Vibe Coding in 2025.
           </p>
-          <p class="animate">
-            Visit
-            <Link href="https://github.com/markhorn-dev/astro-nano" aria-label="Astro Nano on Github" external>
-              Astro Nano on Github
-            </Link>
-            to fork the repository, read the docs or one-click deploy on Vercel or Netlify.
-          </p>
+
+             <p class="animate">
+
+               <Link href="https://buymeacoffee.com/imknight" aria-label="Buy Me a Coffee" external>
+                 Buy Me a Coffee
+               </Link>
+               to support my work and keep me motivated.
+             </p>
         </article>
       </section>
 
       <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Latest Dev Logs
+          </h5>
+          <Link href="/logs">
+            See all logs
+          </Link>
+        </div>
+        <ul class="flex flex-col space-y-4">
+          {log.map(entry => (
+            <li>
+              <div class="text-sm opacity-75">
+
+              </div>
+              <div class="font-semibold text-black dark:text-white">
+                {entry.data.title}
+              </div>
+              <div class="text-sm opacity-75">
+                {entry.data.description}
+              </div>
+              <article>
+                  <entry.Content />
+              </article>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Recent products
+          </h5>
+          <Link href="/products">
+            See all products
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {products.map(product => (
+            <li>
+              <ArrowCardLink entry={product} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
             Latest posts
@@ -69,9 +133,8 @@ const work = await Promise.all(
             </li>
           ))}
         </ul>
-      </section>
-
-      <section class="animate space-y-6">
+      </section> -->
+      <!-- <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
             Work Experience
@@ -116,7 +179,7 @@ const work = await Promise.all(
             </li>
           ))}
         </ul>
-      </section>
+      </section> -->
 
       <section class="animate space-y-4">
         <h5 class="font-semibold text-black dark:text-white">
@@ -138,9 +201,9 @@ const work = await Promise.all(
             </li>
           ))}
           <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
-            </Link>
+              <Link href='https://visualdevstudio.com' external>
+                visualdev studio
+              </Link>
           </li>
         </ul>
       </section>
