@@ -4,6 +4,6 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://imknight.github.io",
+  site: "https://imknight.dev",
   integrations: [mdx(), sitemap(), tailwind()],
 });
