@@ -26,8 +26,8 @@ export const PRODUCTS: Metadata = {
 };
 export const SOCIALS: Socials = [
   {
-    NAME: "twitter-x",
-    HREF: "https://twitter.com/imknight",
+    NAME: "X",
+    HREF: "https://x.com/imknight",
   },
   {
     NAME: "blueksy",
