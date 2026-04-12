@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn outdated:*)",
+      "Bash(npm outdated:*)",
+      "Bash(yarn info:*)",
+      "WebFetch(domain:docs.astro.build)",
+      "Bash(npm ls:*)",
+      "Bash(yarn remove:*)",
+      "Bash(yarn add:*)",
+      "Bash(npm show:*)",
+      "Bash(yarn install:*)",
+      "Bash(node -e \"const v=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\); const vers=JSON.parse\\(v\\); console.log\\(vers.slice\\(-5\\).join\\('\\\\n'\\)\\)\")",
+      "WebFetch(domain:github.com)",
+      "Bash(node -e \"const v=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\); const vers=JSON.parse\\(v\\).filter\\(v=>v.startsWith\\('7'\\)\\); console.log\\(vers.join\\('\\\\n'\\)\\)\")",
+      "Bash(grep -l \"client-inject\\\\|clientInject\\\\|vite/env\" /Volumes/DevDisk/static/imknightdev/node_modules/vite/dist/node/chunks/*.js)"
+    ]
+  }
+}

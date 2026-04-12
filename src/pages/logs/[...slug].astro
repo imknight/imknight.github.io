@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
@@ -12,14 +12,14 @@ export async function getStaticPaths() {
     .filter(post => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return logs.map((log) => ({
-    params: { slug: log.slug },
+    params: { slug: log.id },
     props: log,
   }));
 }
 type Props = CollectionEntry<"logs">;
 
 const log = Astro.props;
-const { Content } = await log.render();
+const { Content } = await render(log);
 ---
 
 <PageLayout title={log.data.title} description={log.data.description}>
