@@ -2,5 +2,5 @@
 title: "MarkdownWeb"
 description: "Make any webpage AI-readable."
 date: "Apr 2026"
-link: "https://clipsend.app"
+link: "https://markdownweb.visualdevstudio.com/"
 ---
