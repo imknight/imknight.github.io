@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 
 type Props = {
-  entry: CollectionEntry<"blog"> | CollectionEntry<"projects"> | CollectionEntry<"products">;
+  entry: CollectionEntry<"products">;
 }
 
 const { entry } = Astro.props;
@@ -12,6 +12,11 @@ const { entry } = Astro.props;
   <div class="flex flex-col flex-1 truncate">
     <div class="font-semibold">
       {entry.data.title}
+      {entry.data.status && (
+        <span class="ml-2 inline-block rounded border border-black/15 px-2 py-0.5 text-xs font-normal dark:border-white/20">
+          {entry.data.status}
+        </span>
+      )}
     </div>
     <div class="text-sm">
       {entry.data.description}

@@ -6,7 +6,6 @@ import ArrowCardLink from "@components/ArrowCardLink.astro";
 import { PRODUCTS } from "@consts";
 
 const products = (await getCollection("products"))
-  .filter(product => !product.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 

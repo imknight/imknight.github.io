@@ -1,6 +1,7 @@
 ---
-title: "WebhookHQ [closed]"
+title: "WebhookHQ"
 description: "Webhooks built for the command line"
 date: "August 2026"
 link: "https://webhookhq.com"
+status: "Archived"
 ---

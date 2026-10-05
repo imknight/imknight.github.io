@@ -17,6 +17,7 @@ const products = defineCollection({
     title: z.string(),
     description: z.string(),
     link: z.string().optional(),
+    status: z.string().optional(),
     date: z.coerce.date(),
   }),
 });
