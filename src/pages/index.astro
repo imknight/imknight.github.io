@@ -112,14 +112,14 @@ const products = (await getCollection("products"))
         <ul class="flex flex-wrap gap-2">
           {SOCIALS.map(SOCIAL => (
             <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`} data-umami-event="contact-click" data-umami-event-channel={SOCIAL.NAME} data-umami-event-url={SOCIAL.HREF}>
                 {SOCIAL.NAME}
               </Link>
               {"/"}
             </li>
           ))}
           <li class="line-clamp-1">
-              <Link href='https://visualdevstudio.com' external>
+              <Link href='https://visualdevstudio.com' external data-umami-event="contact-click" data-umami-event-channel="VisualDev Studio" data-umami-event-url="https://visualdevstudio.com">
                 visualdev studio
               </Link>
           </li>

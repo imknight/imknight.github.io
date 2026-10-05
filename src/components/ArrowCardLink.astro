@@ -8,7 +8,7 @@ type Props = {
 const { entry } = Astro.props;
 ---
 
-<a href={`${entry.data.link}`} target="_blank" class="relative group flex flex-nowrap py-3 px-4 pr-10 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+<a href={`${entry.data.link}`} target="_blank" data-umami-event="product-click" data-umami-event-product={entry.data.title} data-umami-event-url={entry.data.link} class="relative group flex flex-nowrap py-3 px-4 pr-10 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
   <div class="flex flex-col flex-1 truncate">
     <div class="font-semibold">
       {entry.data.title}

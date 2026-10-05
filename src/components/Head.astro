@@ -67,10 +67,22 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<script
+    is:inline
+    defer
+    src="https://stat.visualdevstudio.com/script.js"
+    data-website-id="d0edb842-6940-4488-976c-618337be049e"
+    data-domains="imknight.dev,www.imknight.dev"
+></script>
+
 <ClientRouter />
 
 <script>
     import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
+    document.addEventListener("astro:page-load", () => {
+        // Keep Umami's URL current on back/forward navigation; unchanged URLs are ignored.
+        history.replaceState(history.state, "", location.href);
+    });
     document.addEventListener("astro:before-swap", (e) =>
         [
             ...(

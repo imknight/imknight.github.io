@@ -59,6 +59,19 @@ Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, e
 | `npm run lint`            | Run ESLint                                       |
 | `npm run lint:fix`        | Auto-fix ESLint issues                           |
 
+## Analytics
+
+Umami tracking for imknight.dev uses [stat.visualdevstudio.com](https://stat.visualdevstudio.com) and website ID `d0edb842-6940-4488-976c-618337be049e`. Open that website in Umami to view traffic and events.
+
+The shared head loads the tracker once. Umami records page views and referral information. After Astro navigation, the current history entry is refreshed with its existing URL and state so Umami also detects back/forward navigation; unchanged URLs do not produce additional page views. Tracking is limited to `imknight.dev` and `www.imknight.dev`, excluding local previews.
+
+| Event | Action | Properties |
+| --- | --- | --- |
+| `product-click` | Open a product card from the homepage or Products page | `product`, `url` |
+| `contact-click` | Open an X, Bluesky, or VisualDev Studio link under Let's Connect | `channel`, `url` |
+
+Click events measure link openings, not completed contacts or conversions. Blocked tracking and unavailable data are not zero traffic. Dashboard receipt must be checked after deployment; local checks intercept requests to avoid adding test traffic.
+
 ## 🏛️ License
 
 MIT
